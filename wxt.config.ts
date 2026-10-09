@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "wxt";
 
 export default defineConfig({
@@ -5,5 +6,8 @@ export default defineConfig({
   manifest: {
     permissions: ["activeTab", "storage"],
     host_permissions: ["https://aska-api.styltsou.com/*"],
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
