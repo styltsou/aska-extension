@@ -33,7 +33,7 @@ async function post<T>(path: string, body?: unknown): Promise<T> {
     throw new Error(payload?.error?.message ?? "Could not connect to Aska.");
   }
 
-  return (await response.json() as ApiResponse<T>).data;
+  return ((await response.json()) as ApiResponse<T>).data;
 }
 
 export default function App() {
