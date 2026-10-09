@@ -6,11 +6,19 @@ export default function App() {
   return (
     <main className="popup min-w-0">
       <header className="popup-header flex items-center justify-between">
-        <img
-          alt="Aska"
-          className="brand-mark h-auto w-[84px]"
-          src="/aska-logo.svg"
-        />
+        <span className="brand-logo">
+          <img
+            alt="Aska"
+            className="brand-mark brand-mark-light"
+            src="/aska-logo.svg"
+          />
+          <img
+            alt=""
+            aria-hidden="true"
+            className="brand-mark brand-mark-dark"
+            src="/aska-logo-dark.svg"
+          />
+        </span>
         <span className="extension-badge inline-flex items-center gap-1.5">
           <span aria-hidden="true" className="extension-badge-dot" />
           BROWSER EXTENSION
