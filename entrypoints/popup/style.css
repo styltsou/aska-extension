@@ -3,7 +3,7 @@
 }
 
 body {
-  width: 320px;
+  width: 340px;
   min-height: 240px;
   margin: 0;
   color: #222;
@@ -15,64 +15,102 @@ button {
   appearance: none;
   border: 0;
   border-radius: 8px;
-  padding: 9px 12px;
+  padding: 10px 12px;
   color: #fff;
   background: #222;
   font: inherit;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
-}
-
-button:hover:not(:disabled) {
-  background: #444;
 }
 
 button:disabled {
-  cursor: wait;
-  opacity: 0.6;
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .popup {
-  padding: 24px;
+  padding: 20px;
 }
 
 .brand {
+  margin-bottom: 20px;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.04em;
 }
 
-h1 {
-  margin: 32px 0 8px;
-  font-size: 22px;
-  line-height: 1.15;
-  letter-spacing: -0.04em;
-}
-
-p {
-  margin: 0;
+.loading {
+  margin-top: 32px;
   color: #777;
-  font-size: 13px;
-  line-height: 1.5;
 }
 
-.actions {
+.page-preview {
   display: flex;
-  gap: 8px;
-  margin-top: 24px;
+  gap: 12px;
+  min-width: 0;
 }
 
-.secondary {
-  color: #333;
+.preview-image,
+.preview-placeholder {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  object-fit: cover;
   background: #e9e7e2;
 }
 
-.secondary:hover:not(:disabled) {
-  background: #dfdcd5;
+.preview-content {
+  min-width: 0;
 }
 
-.error {
-  margin-top: 16px;
-  color: #a73a2b;
+.site-name,
+.description,
+.url,
+.status {
+  margin: 0;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.site-name {
+  margin-bottom: 3px;
+  text-transform: lowercase;
+}
+
+h1 {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.description {
+  display: -webkit-box;
+  margin-top: 5px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.url {
+  overflow: hidden;
+  margin-top: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.save-button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.status {
+  margin-top: 9px;
+  text-align: center;
 }
