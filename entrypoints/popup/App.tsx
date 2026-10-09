@@ -1,18 +1,58 @@
+import { ArrowUpRight, BookmarkPlus, LockKeyhole } from "lucide-react";
+
+const isConnected = false;
+
 export default function App() {
   return (
-    <main className="popup">
-      <div className="brand">aska</div>
-      <h1>Save this page to your Inbox</h1>
-      <p>
-        Aska will save the current page through the same link flow as pasting
-        its URL into your Inbox.
-      </p>
-      <button className="save-button" disabled type="button">
-        Save to Inbox
+    <main className="popup min-w-0">
+      <header className="popup-header flex items-center justify-between">
+        <img
+          alt="Aska"
+          className="brand-mark h-auto w-[84px]"
+          src="/aska-logo.svg"
+        />
+        <span className="extension-badge inline-flex items-center gap-1.5">
+          <span aria-hidden="true" className="extension-badge-dot" />
+          BROWSER EXTENSION
+        </span>
+      </header>
+
+      <section aria-labelledby="popup-title" className="hero">
+        <div aria-hidden="true" className="hero-icon">
+          <BookmarkPlus size={18} strokeWidth={1.7} />
+        </div>
+        <h1 id="popup-title">Save this page</h1>
+        <p>Add the page you’re viewing to your Aska Inbox and keep it close.</p>
+      </section>
+
+      <button
+        className="save-button transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        disabled={!isConnected}
+        type="button"
+      >
+        <BookmarkPlus aria-hidden="true" />
+        <span>Save to Inbox</span>
       </button>
-      <p className="status">
-        Secure Aska sign-in is being added before saving is enabled.
-      </p>
+
+      {!isConnected ? (
+        <p className="connection-note">
+          <LockKeyhole aria-hidden="true" />
+          Connect your Aska account to start saving.
+        </p>
+      ) : null}
+
+      <footer className="popup-footer flex items-center justify-between">
+        <span>Made for your visual workspace</span>
+        <a
+          className="inline-flex items-center gap-1"
+          href="https://aska-app.styltsou.com"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Open Aska
+          <ArrowUpRight aria-hidden="true" size={12} />
+        </a>
+      </footer>
     </main>
   );
 }
