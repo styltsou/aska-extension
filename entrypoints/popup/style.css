@@ -38,8 +38,12 @@
     --destructive: oklch(0.704 0.191 22.216);
   }
 
-  .brand-mark {
-    content: url("/aska-logo-dark.svg");
+  .brand-mark-light {
+    display: none;
+  }
+
+  .brand-mark-dark {
+    display: block;
   }
 }
 
@@ -103,10 +107,20 @@ button {
   justify-content: space-between;
 }
 
+.brand-logo {
+  display: block;
+  width: 84px;
+  height: 26px;
+}
+
 .brand-mark {
   display: block;
   width: 84px;
   height: auto;
+}
+
+.brand-mark-dark {
+  display: none;
 }
 
 .extension-badge {
