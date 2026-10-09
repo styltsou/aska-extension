@@ -1,10 +1,17 @@
+import { useState } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { createShadowRootUi } from "wxt/utils/content-script-ui/shadow-root";
 
 import "./image-actions.css";
 
-function ImageAction({ onLeave, onEnter }: { onLeave: () => void; onEnter: () => void }) {
-  const [message, setMessage] = React.useState("");
+function ImageAction({
+  onLeave,
+  onEnter,
+}: {
+  onLeave: () => void;
+  onEnter: () => void;
+}) {
+  const [message, setMessage] = useState("");
 
   return (
     <div className="aska-image-action">
@@ -14,7 +21,9 @@ function ImageAction({ onLeave, onEnter }: { onLeave: () => void; onEnter: () =>
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
-          setMessage("Image saving will be available after you connect your Aska account.");
+          setMessage(
+            "Image saving will be available after you connect your Aska account.",
+          );
         }}
         onPointerEnter={onEnter}
         onPointerLeave={onLeave}
@@ -26,7 +35,11 @@ function ImageAction({ onLeave, onEnter }: { onLeave: () => void; onEnter: () =>
         </svg>
         <span>Save to Aska</span>
       </button>
-      {message ? <p aria-live="polite" className="aska-image-action__message">{message}</p> : null}
+      {message ? (
+        <p aria-live="polite" className="aska-image-action__message">
+          {message}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -69,12 +82,9 @@ export default defineContentScript({
         onMount(container) {
           const root: Root = createRoot(container);
           root.render(
-            <ImageAction
-              onEnter={() => {
-                if (closeTimer) clearTimeout(closeTimer);
-              }}
-              onLeave={closeSoon}
-            />,
+            <ImageAction onEnter={() => {
+              if (closeTimer) clearTimeout(closeTimer);
+            }} onLeave={closeSoon} />,
           );
           return root;
         },
@@ -92,17 +102,27 @@ export default defineContentScript({
       ui.mount();
     };
 
-    ctx.addEventListener(document, "pointerover", (event) => {
-      const target = event.target;
-      if (!(target instanceof HTMLImageElement)) return;
+    ctx.addEventListener(
+      document,
+      "pointerover",
+      (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLImageElement)) return;
 
-      const bounds = target.getBoundingClientRect();
-      if (bounds.width < 80 || bounds.height < 60 || !target.currentSrc) return;
-      void showForImage(target);
-    }, true);
+        const bounds = target.getBoundingClientRect();
+        if (bounds.width < 80 || bounds.height < 60 || !target.currentSrc) return;
+        void showForImage(target);
+      },
+      true,
+    );
 
-    ctx.addEventListener(document, "pointerout", (event) => {
-      if (event.target === activeImage) closeSoon();
-    }, true);
+    ctx.addEventListener(
+      document,
+      "pointerout",
+      (event) => {
+        if (event.target === activeImage) closeSoon();
+      },
+      true,
+    );
   },
 });
