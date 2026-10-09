@@ -7,7 +7,7 @@ export default defineConfig({
     permissions: ["activeTab", "storage"],
     host_permissions: ["https://aska-api.styltsou.com/*"],
   },
-  vite: {
+  vite: () => ({
     plugins: [tailwindcss()],
-  },
+  }),
 });
