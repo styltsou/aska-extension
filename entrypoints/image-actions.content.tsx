@@ -53,6 +53,19 @@ export default defineContentScript({
     let activeUi: { remove: () => void } | undefined;
     let closeTimer: ReturnType<typeof setTimeout> | undefined;
     let generation = 0;
+    let pickerActive = false;
+
+    window.addEventListener("aska:color-picker-start", () => {
+      pickerActive = true;
+      generation += 1;
+      if (closeTimer) clearTimeout(closeTimer);
+      activeUi?.remove();
+      activeUi = undefined;
+      activeImage = undefined;
+    });
+    window.addEventListener("aska:color-picker-stop", () => {
+      pickerActive = false;
+    });
 
     const closeSoon = () => {
       if (closeTimer) clearTimeout(closeTimer);
@@ -65,6 +78,7 @@ export default defineContentScript({
     };
 
     const showForImage = async (image: HTMLImageElement) => {
+      if (pickerActive) return;
       if (closeTimer) clearTimeout(closeTimer);
       if (activeImage === image && activeUi) return;
 
@@ -106,6 +120,7 @@ export default defineContentScript({
       document,
       "pointerover",
       (event) => {
+        if (pickerActive) return;
         const target = event.target;
         if (!(target instanceof HTMLImageElement)) return;
 
