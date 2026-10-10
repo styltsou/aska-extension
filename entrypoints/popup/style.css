@@ -244,3 +244,143 @@ button {
 .popup-footer a:hover {
   color: var(--foreground);
 }
+
+.color-section {
+  position: relative;
+  margin-top: 25px;
+  border-top: 1px solid var(--border);
+  padding-top: 19px;
+}
+
+.color-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-section-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--muted);
+}
+
+.color-section h2 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 640;
+}
+
+.color-section-heading p {
+  margin: 3px 0 0;
+  color: var(--muted-foreground);
+  font-size: 11px;
+}
+
+.pick-color-button {
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 11px;
+  font-weight: 620;
+  cursor: pointer;
+}
+
+.pick-color-button:hover {
+  background: var(--muted);
+}
+
+.pick-color-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.pick-color-button:focus-visible,
+.picked-color-copy:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+.picked-color {
+  display: flex;
+  min-height: 66px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 8px;
+  background: var(--muted);
+}
+
+.picked-color-swatch {
+  display: block;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border: 1px solid rgb(0 0 0 / 12%);
+  border-radius: 7px;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 12%);
+}
+
+.picked-color-values {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.picked-color-values strong {
+  font: 650 13px/1.15 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.picked-color-values span {
+  color: var(--muted-foreground);
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.picked-color-copy {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.picked-color-copy:hover {
+  color: var(--foreground);
+}
+
+.color-pending-note {
+  margin: 9px 0 0;
+  color: var(--muted-foreground);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.picker-error {
+  margin: 10px 0 0;
+  color: var(--destructive);
+  font-size: 10px;
+  line-height: 1.4;
+}
